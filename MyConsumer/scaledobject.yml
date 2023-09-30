@@ -1,0 +1,16 @@
+apiVersion: keda.sh/v1alpha1
+kind: ScaledObject
+metadata:
+  name: myconsumer-scaler
+spec:
+  scaleTargetRef:
+    name: myconsumer-deployment
+  minReplicaCount: 1
+  maxReplicaCount: 10
+  triggers:
+  - type: azure-servicebus
+    metadata:
+      queueName: MyQueue
+      queueLength: '10'
+    authenticationRef:
+      name: myconsumer-trigger-authentication

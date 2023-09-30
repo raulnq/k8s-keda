@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: myconsumer-deployment
+  labels:
+    app: myconsumer
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: myconsumer
+  template:
+    metadata:
+      labels:
+        app: myconsumer
+    spec:
+      containers:
+        - name: myconsumer-container
+          imagePullPolicy: IfNotPresent
+          image: raulnq/myconsumer:1.0

@@ -1,0 +1,9 @@
+apiVersion: keda.sh/v1alpha1
+kind: TriggerAuthentication
+metadata:
+  name: myconsumer-trigger-authentication
+spec:
+  secretTargetRef:
+  - parameter: connection
+    name: myconsumer-secret
+    key: connectionstring
